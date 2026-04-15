@@ -1,22 +1,9 @@
 #include <REGX52.H>
+#include "Delay.h"
+
 
 unsigned char NixieTable[]={0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x77,0x7C,0x39,0x5E,0x79,0x71,0x00};
-void Delay(unsigned int xms)		
-{
-	unsigned char i, j;
-    while(xms--)
-    {
-    
-        i = 11;
-        j = 190;
-        do
-        {
-            while (--j);
-        } while (--i);
-    }
-    
 
-}
 
 void Nixie(unsigned char Location,Number)
 {
@@ -35,19 +22,4 @@ void Nixie(unsigned char Location,Number)
     P0=NixieTable[Number];
     Delay(1);  
     P0=0x00;    
-}
-
-void main()
-{
-      
-    
-    while(1)
-    {
-          Nixie(1,1);
-//        Delay(200);
-          Nixie(2,2);
-//        Delay(200);
-          Nixie(3,3);
-//        Delay(200);
-    }
 }
